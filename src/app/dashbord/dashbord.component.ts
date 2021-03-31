@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactService } from './services/contact.service';
 
 @Component({
   selector: 'app-dashbord',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashbordComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private contactService: ContactService) { }
+  Contacts:any
   ngOnInit(): void {
   }
+  deleteUser(id:number){
 
+  }
 }

@@ -1,1 +1,45 @@
-<p>update-contact works!</p>
+<div class="container row">
+    <div class="offset-3 col-6">
+        <h1>Update Contact</h1>
+        <form class="example-form" [formGroup]="updatecontactForm" (ngSubmit)="updateContact()">
+            <mat-form-field class="example-full-width">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="Ex. Nadhem" formControlName="fName">
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updatecontactForm.controls.fName.hasError('required')">
+              First Name is required
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Ex. Bouazza" formControlName="lName">
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updatecontactForm.controls.lName.hasError('required')">
+              Last Name is required
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>E-mail</mat-label>
+                <input type="email" matInput placeholder="Ex. azert@gmail.com"  formControlName="email">
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updatecontactForm.controls.email.hasError('required')">
+              email is required
+            </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Tél</mat-label>
+                <input type="tel" matInput placeholder="Ex. 22000000" formControlName="tel">
+            </mat-form-field>
+            <mat-error *ngIf="submitted && updatecontactForm.controls.tel.hasError('required')">
+              tel is required
+            </mat-error>
+
+            <div class="example-button-row">
+            <button mat-raised-button color="primary" style="margin: 10px auto;" type="submit" [disabled]="updatecontactForm.invalid">Save</button>
+            <button mat-raised-button color="dark" class="float-right" style="margin: 10px auto;" type="button" [routerLink]="['/dashbord']">Cancel</button>
+            </div>
+        </form>
+    </div>
+  </div>
+  
+
