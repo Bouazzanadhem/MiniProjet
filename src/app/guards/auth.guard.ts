@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
   constructor(private router:Router) {}
-  connecteduser = JSON.parse(localStorage.getItem("user-connected") || '[]');
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.connecteduser.length == 0 ) {
+      const connecteduser = JSON.parse(localStorage.getItem("user-connected") || '[]');
+      if (connecteduser.length == 0 ) {
         this.router.navigateByUrl('/login')
         return false;
       } else {
