@@ -26,6 +26,11 @@ export class AddContactComponent implements OnInit {
     if (this.addcontactForm.invalid){
       return;
     }
+    this.contactService.addcontact(this.addcontactForm.value).subscribe((response:any)=>{
+      this.route.navigate(['dashbord']);
+    },(error)=>{
+      console.log(error);
+    });
   }
 
 }

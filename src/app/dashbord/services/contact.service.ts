@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,13 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class ContactService {
 
-  constructor() { }
-  // Add new product (used in add-contact component)
-  addcontact(userData: any){
-    // return this.http.post("http://localhost:3000/Users",userData)
+  constructor(private http: HttpClient) { }
+  // Add new contact (used in add-contact component)
+  addcontact(contactData: any){
+    return this.http.post("http://localhost:3000/contacts",contactData)
   }
 
-  //Get all products (used in dashbord compnent)
+  //Get all contacts (used in dashbord compnent)
   getAllcontact(){
     // return this.http.get("http://localhost:3000/Users")
   }

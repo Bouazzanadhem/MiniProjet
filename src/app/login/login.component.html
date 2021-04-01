@@ -1,6 +1,6 @@
 <div class="container row">
     <div class="offset-3 col-6">
-        <h1>Register</h1>
+        <h1>Sign In</h1>
         <form class="example-form" [formGroup]="loginForm" (ngSubmit)="login()">
             
 
@@ -21,7 +21,8 @@
             </mat-error>
 
             <div class="example-button-row">
-            <button mat-raised-button color="primary" style="margin: 10px auto;" type="submit" [disabled]="loginForm.invalid">Login</button>
+            <button mat-raised-button color="primary" style="margin: 10px auto;" type="submit" [disabled]="loginForm.invalid">Sign In</button>
+            <button class="float-right" mat-raised-button color="dark" style="margin: 10px auto;" type="button" [routerLink]="['/register']">Go to Sign Up</button>
             </div>
         </form>
     </div>

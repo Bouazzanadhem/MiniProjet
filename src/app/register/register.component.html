@@ -1,6 +1,6 @@
 <div class="container row">
     <div class="offset-3 col-6">
-        <h1>Register</h1>
+        <h1>Sign Up</h1>
         <form class="example-form" [formGroup]="registerForm" (ngSubmit)="register()">
             <mat-form-field class="example-full-width">
               <mat-label>First Name</mat-label>
@@ -41,9 +41,13 @@
             <mat-error *ngIf=" submitted &&registerForm.controls.email.hasError('required')">
               Confirm Password is required
             </mat-error>
+            <mat-error *ngIf="submitted && registerForm.hasError('misMatch')">
+              Password Confirmation does not much
+            </mat-error>
 
             <div class="example-button-row">
-            <button mat-raised-button color="primary" style="margin: 10px auto;" type="submit" [disabled]="registerForm.invalid">Register</button>
+            <button mat-raised-button color="primary" style="margin: 10px auto;" type="submit" [disabled]="registerForm.invalid">Sign Up</button>
+            <button class="float-right" mat-raised-button color="dark" style="margin: 10px auto;" type="button" [routerLink]="['/login']" >Go to Sign Ip</button>
             </div>
         </form>
     </div>
