@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ReglogService } from '../services/reglog.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
     validators: [this.passwordValidator]
   });
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private userService:ReglogService) { }
 
   ngOnInit(): void {
   }
@@ -28,9 +29,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid){
       return;
     }
-    let users = JSON.parse(localStorage.getItem("users") || '[]')
-    users.push(this.registerForm.value);
-    localStorage.setItem("users",JSON.stringify(users));
+    this.userService.SignupUser(this.registerForm.value)
     this.route.navigate(['/login'])
   }
   passwordValidator(group: AbstractControl):  {[key:string]:boolean} | null{
