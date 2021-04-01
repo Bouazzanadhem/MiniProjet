@@ -11,8 +11,19 @@ export class DashbordComponent implements OnInit {
   constructor(private contactService: ContactService) { }
   Contacts:any
   ngOnInit(): void {
+    this.contactService.getAllcontact().subscribe((response)=>{
+      this.Contacts = response
+    },(error)=>{
+      console.log(error);
+      
+    })
   }
-  deleteUser(id:number){
-
+  deleteContact(id:number){
+    this.contactService.deletecontactById(id).subscribe((response)=>{
+      this.ngOnInit()
+    },(error)=>{
+      console.log(error);
+      
+    })
   }
 }

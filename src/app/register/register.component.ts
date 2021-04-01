@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
   passwordValidator(group: AbstractControl):  {[key:string]:boolean} | null{
     const  password  =  group.get('password');
     const confirmPassword  = group.get('confirmpassword');
-    // console.log(password?.value , confirmPassword?.value);
     if (password?.pristine || confirmPassword?.pristine){
       return null ;
     }

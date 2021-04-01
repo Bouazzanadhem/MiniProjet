@@ -14,21 +14,21 @@ export class ContactService {
 
   //Get all contacts (used in dashbord compnent)
   getAllcontact(){
-    // return this.http.get("http://localhost:3000/Users")
+    return this.http.get("http://localhost:3000/contacts")
   }
 
-  //Get Product by index (used in update-contact component)
+  //Get contact by index (used in update-contact component)
   getcontactById(id:number){
-    // return this.http.get("http://localhost:3000/Users/"+id)
+    return this.http.get("http://localhost:3000/contacts/"+id)
   }
 
-  //Update product by index (used in update-contact compoenent)
+  //Update contact by index (used in update-contact compoenent)
   updatecontactDataById(updatuserData:any,id:number){
-    // return this.http.put("http://localhost:3000/Users/"+id,updatuserData)
+    return this.http.put("http://localhost:3000/contacts/"+id,updatuserData)
   }
 
-  // Delete Product by index (used in dashbord component)
+  // Delete contact by index (used in dashbord component)
   deletecontactById(id:number){
-    // return this.http.delete("http://localhost:3000/Users/"+id)
+    return this.http.delete("http://localhost:3000/contacts/"+id)
   }
 }
