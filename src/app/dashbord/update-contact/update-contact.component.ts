@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactService } from '../services/contact.service';
 
@@ -19,7 +20,8 @@ export class UpdateContactComponent implements OnInit {
   constructor(
     private contactService: ContactService ,
     private route: ActivatedRoute ,
-    private router: Router) { }
+    private router: Router,
+    private snackbar: MatSnackBar) { }
   contactId:any
   ngOnInit(): void {
     this.contactId = this.route.snapshot.params['id']
@@ -44,6 +46,9 @@ export class UpdateContactComponent implements OnInit {
     }
     this.contactService.updatecontactDataById(this.updatecontactForm.value,this.contactId).subscribe((response)=>{
       this.router.navigate(['/dashbord'])
+      this.snackbar.open("contact updated successfully", "close", {
+        duration: 2000,
+      });
     },(error)=>{
       console.log(error);
       

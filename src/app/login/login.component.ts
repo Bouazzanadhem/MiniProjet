@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ReglogService } from '../services/reglog.service';
 
 @Component({
@@ -15,9 +14,10 @@ export class LoginComponent implements OnInit {
     password: new FormControl('',[Validators.required, Validators.minLength(6)]),
   })
 
-  constructor(private route: Router, private userService:ReglogService) { }
+  constructor(private userService:ReglogService) { }
   
   ngOnInit(): void {
+    console.log(JSON.parse(localStorage.getItem("user-connected") || '[]'));
     
   }
   login(){

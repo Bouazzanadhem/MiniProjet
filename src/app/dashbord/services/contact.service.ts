@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,9 @@ export class ContactService {
 
   constructor(private http: HttpClient) { }
   // Add new contact (used in add-contact component)
-  addcontact(contactData: any){
-    return this.http.post("http://localhost:3000/contacts",contactData)
+  addcontact(contactData: any): Observable<any>
+  {
+    return this.http.post<any>("http://localhost:3000/contacts",contactData)
   }
 
   //Get all contacts (used in dashbord compnent)

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ReglogService } from '../services/reglog.service';
 
@@ -20,7 +21,10 @@ export class RegisterComponent implements OnInit {
     validators: [this.passwordValidator]
   });
 
-  constructor(private route: Router, private userService:ReglogService) { }
+  constructor(
+    private route: Router,
+    private userService:ReglogService,
+    private snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +35,10 @@ export class RegisterComponent implements OnInit {
     }
     this.userService.SignupUser(this.registerForm.value)
     this.route.navigate(['/login'])
+    this.snackbar.open("Sign Up with success", "close", {
+      duration: 2000,
+
+    });
   }
   passwordValidator(group: AbstractControl):  {[key:string]:boolean} | null{
     const  password  =  group.get('password');
