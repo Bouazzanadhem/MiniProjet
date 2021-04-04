@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ReglogService } from '../services/reglog.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,15 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  isLoggedIn : Observable<boolean>;
 
-  constructor(private route:Router) { }
+  constructor(private userService:ReglogService) {
+    this.isLoggedIn = userService.isLoggedIn();
+   }
 
   ngOnInit(): void {
   }
   Signout(){
-    localStorage.removeItem("user-connected");
-    this.route.navigate(['/login'])
-     
+    this.userService.SignoutUser();
   }
 
 }
+
